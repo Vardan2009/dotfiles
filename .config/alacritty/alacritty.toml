@@ -1,0 +1,21 @@
+[window.dimensions]
+columns = 100
+lines = 40
+
+[keyboard]
+bindings = [
+	{ key = "Enter", mods = "Alt", action = "ToggleFullscreen" },
+	{ key = "F11", action = "ToggleFullscreen" }
+]
+
+[window]
+opacity = 0.90
+
+[font.normal]
+family = "CaskaydiaCove Nerd Font"
+
+[terminal.shell]
+program = "zsh"
+
+[colors]
+draw_bold_text_with_bright_colors = true
