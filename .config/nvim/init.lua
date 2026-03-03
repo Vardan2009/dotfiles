@@ -151,7 +151,23 @@ require("lazy").setup({
 		priority = 1000,
 		config = function()
 			vim.g.everforest_enable_italic = true
-			vim.cmd.colorscheme("everforest")
+		end,
+	},
+
+	{
+		"rebelot/kanagawa.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.cmd("colorscheme kanagawa")
+		end,
+	},
+
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("lualine").setup()
 		end,
 	},
 
