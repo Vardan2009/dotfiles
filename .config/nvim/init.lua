@@ -75,18 +75,6 @@ require("lazy").setup({
 	},
 
 	{
-		"williamboman/mason-lspconfig.nvim",
-		lazy = false,
-		opts = {
-			ensure_installed = {
-				"clangd",
-				"pyright",
-				"stylua",
-			},
-		},
-	},
-
-	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		dependencies = {
@@ -188,6 +176,7 @@ require("lazy").setup({
 					markdown = { "prettier" },
 					vue = { "prettier" },
 					lua = { "stylua" },
+					python = { "darker" },
 				},
 				format_on_save = function(bufnr)
 					local disable_filetypes = { c = true, cpp = true }
@@ -226,7 +215,7 @@ vim.lsp.config("ts_ls", {
 		"typescript.tsx",
 		"vue",
 	},
-	cmd = { "typescript-language-server", "--stdio" },
+	cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/typescript-language-server"), "--stdio" },
 	settings = {
 		implicitProjectConfiguration = {
 			checkJs = true,
@@ -247,11 +236,17 @@ vim.lsp.config("ts_ls", {
 
 vim.lsp.config("vue_ls", {
 	filetypes = { "vue" },
-	cmd = { "vue-language-server", "--stdio" },
+	cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/vue-language-server"), "--stdio" },
+})
+
+vim.lsp.config("pyright", {
+	filetypes = { "python" },
+	cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/pyright-langserver"), "--stdio" },
 })
 
 vim.lsp.enable("ts_ls")
 vim.lsp.enable("vue_ls")
+vim.lsp.enable("pyright")
 
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "K", vim.lsp.buf.hover)
