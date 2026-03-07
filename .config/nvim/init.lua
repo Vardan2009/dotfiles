@@ -71,7 +71,6 @@ require("lazy").setup {
         callback = function()
           vim.treesitter.start()
         end,
-        once = true,
       })
     end,
   },
