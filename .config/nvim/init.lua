@@ -64,6 +64,16 @@ require("lazy").setup {
       highlight = { enable = true },
       indent = { enable = true },
     },
+    config = function()
+      vim.cmd.syntax "off"
+      vim.api.nvim_create_autocmd("BufReadPost", {
+        pattern = "*",
+        callback = function()
+          vim.treesitter.start()
+        end,
+        once = true,
+      })
+    end,
   },
 
   {
@@ -208,12 +218,6 @@ require("lazy").setup {
         notify_on_error = true,
       }
     end,
-  },
-}
-
-require("nvim-treesitter.configs").setup {
-  highlight = {
-    enable = true,
   },
 }
 
